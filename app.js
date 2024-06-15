@@ -6,6 +6,7 @@ const db = require("./config/mongoose-connection")
 const usersRouter = require("./routes/usersRouter")
 const ownersRouter = require("./routes/ownersRouter")
 const registerRouter = require("./routes/resgisterRouter")
+require("dotenv").config()  // so that we can use all the .env file data
 
 
 const port = 3000
@@ -16,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // for static files
 
 app.use("/",registerRouter)
-app.use("/owners",ownersRouter) // // means /owners route functions are comming from ownersRouter
-app.use("/users",usersRouter) // means /users route functions are comming from usersRouter
+app.use("/owners",ownersRouter) //  means /owners route will show the content of ownersRouter
+app.use("/users",usersRouter) // means /users route will show the content of usersRouter
 
 app.listen(port,() => {
     console.log("server is online on port number", port)

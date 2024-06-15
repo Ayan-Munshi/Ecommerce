@@ -1,4 +1,4 @@
-.env
+echo.env
 development.json
 mongoose-connection.js
 
