@@ -18,6 +18,6 @@ module.exports = async (req,res,next) => {
     }catch(error){
         //res.flash("error , something went wrong")
         res.send(error.message)  //for testing
-        res.redirect("/")
+        //res.redirect("/")
     }
 }

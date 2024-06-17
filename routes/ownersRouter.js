@@ -10,11 +10,12 @@ router.get("/", (req, res) => {
 console.log(process.env.NODE_ENV); // this will show (undefined) at first because we didnt set environment var "NODE_ENV" to "development"/"production"
 // so we need to run (export NODE_ENV=development)(dont add extra space)
 
+
 if (process.env.NODE_ENV === "development") {
   //console.log("testing")
   router.post("/create", async (req, res) => {
     // route is (/owners/create)
-try{
+  try{
     let owners = await ownerModel.find();
     if (owners.length > 0) {
       return res.status(503).send("owner already exists cant create new owner"); // if any owner already exists then send status code 503(service unavailable) else create owner
@@ -28,7 +29,8 @@ try{
       password: password,
     })
     return res.send(createdowner);
-}catch(error){
+    
+  }catch(error){
   return res.send(error.message)
 }
 
