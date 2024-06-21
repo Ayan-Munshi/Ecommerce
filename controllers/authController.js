@@ -11,6 +11,7 @@ const registerUserAuth = async (req, res) => {
 
     if(userExist) res.send("user already exists please login")
     else{
+
       try{ 
   
         bcrypt.genSalt(10, (salterror, salt) => {
@@ -30,11 +31,11 @@ const registerUserAuth = async (req, res) => {
             // adding token to cookie
             let token = jwt_creator(createdUser)  //jwt_creator() func is comming from (gen_token_func) file
             res.cookie("token",token)
+            res.redirect("/shop")
+            //   res.send(token)
+            //   console.log(token);
+            //   res.send(createdUser);
             
-          //   res.send(token)
-          //   console.log(token);
-            
-            res.send(createdUser);
           }
         });
       });
@@ -44,6 +45,8 @@ const registerUserAuth = async (req, res) => {
     }  
     
   };
+
+
 
 const loginUserAuth = async(req,res) => {
   let{email,password} = req.body
@@ -61,7 +64,8 @@ try{
               if(result){
                 let token = jwt_creator(userExist)
                 res.cookie("token",token)
-                res.send("you are successfully loggedin")
+                //res.send("you have loggedin successfully")
+                res.redirect("/shop")
               }else{
                 res.send("invalid email or password")
               } 

@@ -6,8 +6,12 @@ router.get("/",(req,res) => {
     res.render("register_form")
 })
 
-router.get("/profile",isLoggedIn,(req,res) => {
-    res.send("profile")
+router.get("/shop",isLoggedIn,(req,res) => {
+    res.render("shop")
+})
+
+router.get("/login",(req,res) => {
+    res.render("login")
 })
 
 module.exports = router

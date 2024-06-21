@@ -37,4 +37,8 @@ if (process.env.NODE_ENV === "development") {
    })
 }
 
+
+router.get("/adminPanel",(req,res) => {
+  res.render("ownerPanel")
+})
 module.exports = router;
