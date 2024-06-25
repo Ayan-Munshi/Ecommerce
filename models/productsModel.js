@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const postSchema = mongoose.Schema({
     productname: String,
     price:Number,
-    picture:String,
+    picture:Buffer,
     discount: {
         type: Number,
         default: 0

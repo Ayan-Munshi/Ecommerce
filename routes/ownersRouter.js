@@ -3,6 +3,7 @@ const router = express.Router();
 const ownerModel = require("../models/ownersModel");
 const bcrypt = require("bcrypt");
 
+
 router.get("/", (req, res) => {
   res.send("owners route is working");
 });
@@ -38,7 +39,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 
-router.get("/adminPanel",(req,res) => {
+router.get("/ownerPanel",(req,res) => {
   res.render("ownerPanel")
 })
+
+
 module.exports = router;

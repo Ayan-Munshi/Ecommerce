@@ -79,4 +79,10 @@ try{
 } 
 
 
-module.exports = {registerUserAuth,loginUserAuth}
+const logoutUserAuth = (req,res) => {
+     res.cookie("token","")
+     res.redirect("/login")
+}
+
+
+module.exports = {registerUserAuth,loginUserAuth,logoutUserAuth}
