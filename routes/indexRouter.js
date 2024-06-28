@@ -9,7 +9,7 @@ router.get("/",(req,res) => {
 
 router.get("/shop",isLoggedIn, async(req,res) => {
     const allproducts = await productsModel.find()
-    res.render("shop")
+    res.render("shop",{allproducts})
 })
 
 router.get("/login",(req,res) => {

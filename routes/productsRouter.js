@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const postModel = require("../models/productsModel")
+const productModel = require("../models/productsModel")
 const upload = require("../config/multer-config")
 
 router.get("/",(req,res) => {
@@ -9,7 +9,7 @@ router.get("/",(req,res) => {
 
 router.post("/create",upload.single("picture"),async(req,res)=>{
    let {productname,discount,price,panelcolor,textcolor,bgcolor} = req.body 
-   await postModel.create({
+   await productModel.create({
     picture: req.file.buffer,
     productname: productname,
     price:price,
