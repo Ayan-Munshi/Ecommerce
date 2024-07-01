@@ -8,6 +8,76 @@
   </head>
   <body class="bg-gray-200">
 
+    <!--this is for flash message alert of registration success-->
+    <% if(flash_message.length > 0){%>
+      <div
+      role="alert"
+      class=" ml-[400px]  sticky top-1 z-10 h-[50px] w-[900px] items-center justify-center text-base text-white bg-transparent font-regular "
+      data-dismissible="alert"
+    >
+      <div class="flex items-center h-[100%] w-[100%] max-w-screen-lg  bg-blue-400 opacity-75 rounded-lg shadow-lg shadow-gray-400 ">
+        <div class="ml-12"><%= flash_message %></div>
+        <button
+          data-dismissible-target="alert"
+          class="absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+        >
+          <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    
+    <%} else if(login_flash.length > 0){ %> <!--this is for flash message alert of login success-->
+
+      <div
+      role="alert"
+      class=" ml-[400px]  sticky top-1 z-10 h-[50px] w-[900px] items-center justify-center text-base text-white bg-transparent font-regular "
+      data-dismissible="alert"
+    >
+      <div class="flex items-center h-[100%] w-[100%] max-w-screen-lg  bg-blue-400 opacity-75 rounded-lg shadow-lg shadow-gray-400 ">
+        <div class="ml-12"><%= login_flash %></div>
+        <button
+          data-dismissible-target="alert"
+          class="absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+        >
+          <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <%} %>
+
+    <!--main frame-->
     <div class="flex h-screen w-screen ">
       
       <div class="bg-zinc-100 h-[100%] w-[15%]">
@@ -208,7 +278,7 @@
       
       <div class="gap-5 flex flex-wrap pl-[70px] w-[85%]">
 
-        <div class=" h-[60px] w-[100%] bg-white sticky top-2 z-10 mx-5 p-3 border-b-[1px] border-gray-300 rounded-xl shadow-2xl shadow-gray-400">Cart</div>
+       
         
         <% allproducts.map(product => { %>
         <div
@@ -302,7 +372,7 @@
               </div>
             </div>
             <a
-              href="#"
+              href="users/addtocart/<%= product._id %>"
               class="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
               <svg
@@ -319,13 +389,24 @@
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              Add to cart</a
-            >
+              Add to cart 
+            </a>
           </div>
         </div>
 
         <% }) %>
       </div>
     </div>
+
+    <!--script for alert message vanish-->
+    <script>
+      document.querySelectorAll('[data-dismissible="alert"]').forEach(alert => {
+        alert
+          .querySelector('[data-dismissible-target]')
+          .addEventListener('click', () => {
+            alert.style.display = 'none';
+          });
+      });
+    </script>
   </body>
 </html>

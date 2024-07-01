@@ -31,6 +31,7 @@ const registerUserAuth = async (req, res) => {
             // adding token to cookie
             let token = jwt_creator(createdUser)  //jwt_creator() func is comming from (gen_token_func) file
             res.cookie("token",token)
+            req.flash("success","you have registered successfully")
             res.redirect("/shop")
             //   res.send(token)
             //   console.log(token);
@@ -65,6 +66,7 @@ try{
                 let token = jwt_creator(userExist)
                 res.cookie("token",token)
                 //res.send("you have loggedin successfully")
+                req.flash("loginsuccess","you have logged in successfully")
                 res.redirect("/shop")
               }else{
                 res.send("invalid email or password")
@@ -81,6 +83,7 @@ try{
 
 const logoutUserAuth = (req,res) => {
      res.cookie("token","")
+     req.flash("logoutsuccess","you have logged out successfully")
      res.redirect("/login")
 }
 

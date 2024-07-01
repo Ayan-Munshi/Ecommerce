@@ -7,6 +7,8 @@ const usersRouter = require("./routes/usersRouter")
 const ownersRouter = require("./routes/ownersRouter")
 const indexRouter = require("./routes/indexRouter")
 const productRouter = require("./routes/productsRouter")
+const session = require("express-session")
+const flash = require("connect-flash")
 require("dotenv").config()  // so that we can use all the .env file data
 
 
@@ -16,6 +18,16 @@ app.set("view engine","ejs")
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // for static files
+app.use(
+    session({
+        secret:process.env.SESSION_SECRET || "random",
+        rersave:false,
+        saveUninitialized:true,
+        cookie:{maxAge:6000}
+    })
+)
+
+app.use(flash())
 
 app.use("/",indexRouter)
 app.use("/owners",ownersRouter) //  means /owners route will show the content of ownersRouter
