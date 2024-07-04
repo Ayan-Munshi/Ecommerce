@@ -1,7 +1,6 @@
 //This controller file is just for code convenience
 const userModel = require("../models/usersModel");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const { jwt_creator } = require("../util/gen_token_func");
 
 const registerUserAuth = async (req, res) => {
@@ -29,7 +28,7 @@ const registerUserAuth = async (req, res) => {
             });
     
             // adding token to cookie
-            let token = jwt_creator(createdUser)  //jwt_creator() func is comming from (gen_token_func) file
+            let token = jwt_creator(createdUser)  //jwt_creator() func is comming from (gen_token_func) file which is in util
             res.cookie("token",token)
             req.flash("success","you have registered successfully")
             res.redirect("/shop")
@@ -79,6 +78,7 @@ try{
   }
 
 } 
+
 
 
 const logoutUserAuth = (req,res) => {

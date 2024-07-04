@@ -10,7 +10,7 @@ module.exports = async (req,res,next) => {
 
     try{
       
-        let data = jwt.verify(req.cookies.token,process.env.JWT_SECRET_KEY)
+        let data = jwt.verify(req.cookies.token,process.env.JWT_SECRET_KEY) //data contains email and id of the user
         let user = await userModel.findOne({email:data.email}).select("-password") // don't select password
         req.user = user
         next()

@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   res.send("users route working");
 });
 
-router.post("/create",registerUserAuth )
+router.post("/create",registerUserAuth )   // these Auths are comming from controller
 
 router.post("/login",loginUserAuth)
 

@@ -75,11 +75,44 @@
         </button>
       </div>
     </div>
+    <%} else if(cart_success.length >0){ %>
+      <div
+      role="alert"
+      class=" ml-[400px]  sticky top-1 z-10 h-[50px] w-[900px] items-center justify-center text-base text-white bg-transparent font-regular "
+      data-dismissible="alert"
+    >
+      <div class="flex items-center h-[100%] w-[100%] max-w-screen-lg  bg-green-400 opacity-75 rounded-lg shadow-lg shadow-gray-400 ">
+        <div class="ml-12"><%= cart_success %></div>
+        <button
+          data-dismissible-target="alert"
+          class="absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+        >
+          <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
     <%} %>
 
     <!--main frame-->
     <div class="flex h-screen w-screen ">
       
+      <!-- sidebar-->
       <div class="bg-zinc-100 h-[100%] w-[15%]">
         <aside
           id="default-sidebar"
@@ -179,7 +212,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/cart"
                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-zinc-500 hover:bg-gray-100 dark:hover:bg-gray-700 group border-[0.5px] border-gray-400"
                 >
                   <svg
@@ -193,7 +226,7 @@
                       d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"
                     />
                   </svg>
-                  <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
+                  <span class="flex-1 ms-3 whitespace-nowrap">Cart</span>
                 </a>
               </li>
               <li>
@@ -275,11 +308,9 @@
       </div>
 
 
-      
+      <!--products-->
       <div class="gap-5 flex flex-wrap pl-[70px] w-[85%]">
 
-       
-        
         <% allproducts.map(product => { %>
         <div
           class="relative m-4  flex  w-[300px] max-w-xs flex-col overflow-hidden rounded-lg border border-gray-300 bg-<%= product.bgcolor %>-400 shadow-lg shadow-gray-400 "
@@ -372,7 +403,7 @@
               </div>
             </div>
             <a
-              href="users/addtocart/<%= product._id %>"
+              href="/addtocart/<%= product._id %>"
               class="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
               <svg
