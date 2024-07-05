@@ -36,12 +36,26 @@ router.get("/addtocart/:product_id",isLoggedIn,async(req,res) => {
 
 router.get("/cart",isLoggedIn,async(req,res) => {
     let usr = await usersModel.findOne({email: req.user.email}).populate("cart")
-    res.render("cart",{cartuser:usr})
+    let deleteCartP_success = req.flash("deleteCartP_success")
+    
+    let total_price = 0
+    usr.cart.map(product => {
+      total_price = total_price + product.price
+    })
+    //console.log(total_price)
+    res.render("cart",{cartuser:usr , deleteCartP_success , total_price})
 } )
 
 
 router.get("/deletecartP/:product_id",isLoggedIn,async(req,res) => {
-    console.log("product")
+    //console.log(req.user)
+    let usr = await usersModel.findOne({email:req.user.email})
+    //console.log("Current cart array:", usr.cart);
+    usr.cart = usr.cart.filter(Product_id => Product_id.toString() !== req.params.product_id ) // had to convert the id into string firt
+    await usr.save()
+    //console.log("new cart array:", usr.cart);
+    req.flash("deleteCartP_success","Product deleted from cart")
+    res.redirect("/cart")
 })
 
 

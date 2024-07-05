@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+// owner was created through postman
 
 const ownerSchema = mongoose.Schema({
     fullname: {
