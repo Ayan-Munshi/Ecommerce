@@ -113,10 +113,10 @@
     <div class="flex h-screen w-screen ">
       
       <!-- sidebar-->
-      <div class="bg-zinc-100 h-[100%] w-[15%]">
+      <div class="bg-zinc-100 h-[100%] max-w-[55%] min-w-[15%]">
         <aside
           id="default-sidebar"
-          class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+          class="fixed top-0 left-0 z-40 max-w-64 h-screen transition-transform-translate-x-full sm:translate-x-0"
           aria-label="Sidebar"
         >
           <div
@@ -286,11 +286,11 @@
 
 
       <!--products-->
-      <div class="gap-5 flex flex-wrap pl-[70px] w-[85%]">
+      <div class="gap-5 flex flex-wrap pl-[70px] max-w-[85%] min-w-auto">
 
         <% allproducts.map(product => { %>
         <div
-          class="relative m-4  flex  w-[300px] max-w-xs flex-col overflow-hidden rounded-lg border border-gray-300 bg-<%= product.bgcolor %>-400 shadow-lg shadow-gray-400 "
+          class="relative m-4  flex h-[400px]  w-[300px] max-w-xs flex-col overflow-hidden rounded-lg border border-gray-300 bg-<%= product.bgcolor %>-400 shadow-lg shadow-gray-400 "
         >
           <a
             class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
@@ -302,7 +302,7 @@
               alt="product image"
             />
             <span
-              class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-<%= product.textcolor %>"
+              class="absolute top-0 left-0 m-2 rounded-full bg-transparent border-[2px] border-gray-400 px-2 text-center text-sm font-medium text-<%= product.textcolor %>"
               ><%= product.discount %>% OFF</span
             >
           </a>
@@ -314,7 +314,7 @@
             </a>
             <div class="mt-2 mb-5 flex items-center justify-between">
               <p>
-                <span class="text-3xl font-bold text-<%= product.textcolor %> ">Rs:<%= product.price %></span>
+                <span class="text-xl font-bold text-<%= product.textcolor %> ">Rs:<%= product.price %></span>
                 <!-- <span class="text-sm text-slate-900 line-through">$699</span> -->
               </p>
               <div class="flex items-center">

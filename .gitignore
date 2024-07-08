@@ -1,5 +1,6 @@
 .env
 development.json
 mongoose-connection.js
+enviroment_values.txt
 
 

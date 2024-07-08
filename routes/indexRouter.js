@@ -51,7 +51,7 @@ router.get("/deletecartP/:product_id",isLoggedIn,async(req,res) => {
     //console.log(req.user)
     let usr = await usersModel.findOne({email:req.user.email})
     //console.log("Current cart array:", usr.cart);
-    usr.cart = usr.cart.filter(Product_id => Product_id.toString() !== req.params.product_id ) // had to convert the id into string firt
+    usr.cart = usr.cart.filter(cart_Product_id => cart_Product_id.toString() !== req.params.product_id ) // had to convert the id into string firt
     await usr.save()
     //console.log("new cart array:", usr.cart);
     req.flash("deleteCartP_success","Product deleted from cart")
