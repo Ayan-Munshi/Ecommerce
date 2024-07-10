@@ -17,12 +17,6 @@ Authentication: bcrypt, JWT
 Templating: EJS
 UI Libraries: [Specify the libraries used, e.g., Material-UI, Bootstrap, etc.]
 Setup Instructions:
-
-Clone the repository: git clone https://github.com/your-username/your-repo-name.git
-Navigate to the project directory: cd your-repo-name
-Install dependencies: npm install
-Set up environment variables (e.g., database URI, JWT secret) in a .env file.
-Start the application: npm start
 Usage:
 
 Register or log in to access the user features.
