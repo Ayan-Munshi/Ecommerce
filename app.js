@@ -1,8 +1,8 @@
 const cookieParser = require("cookie-parser")
 const express = require("express")
 const app = express()
-const path = require("path")
-const db = require("./config/mongoose-connection") // by just importing (mongoose-connection) the backend will be connected to the mongodb
+const path = require("path") 
+const db = require("./config/mongoose-connection") //by just importing (mongoose-connection) the backend will be connected to the mongodb
 const usersRouter = require("./routes/usersRouter")
 const ownersRouter = require("./routes/ownersRouter")
 const indexRouter = require("./routes/indexRouter")
